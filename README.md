@@ -7,9 +7,9 @@
 Virtual Store Phase 1:  create an e-Commerce storefront using React with Redux, coupled with live API server.
 
 
-[PR link]()
+[PR link](https://github.com/salammustafa728/storefront/pull/1)
 
-[Deploy Link]()
+[Deploy Link](https://storefront-app-salam.netlify.app/)
 
 
 # UML 
