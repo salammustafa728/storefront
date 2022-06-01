@@ -12,6 +12,11 @@ Virtual Store Phase 1:  create an e-Commerce storefront using React with Redux, 
 [Deploy Link](https://storefront-app-salam.netlify.app/)
 
 
+Virtual Store Phase 2: breaking up the store into multiple reducers and sharing functionality/data between components
+
+[PR link](https://github.com/salammustafa728/storefront/pull/2)
+
+
 # UML 
 
 ![uml](./src/images/storefront-uml.png)
