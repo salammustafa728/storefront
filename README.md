@@ -14,7 +14,7 @@ Virtual Store Phase 1:  create an e-Commerce storefront using React with Redux, 
 
 Virtual Store Phase 2: breaking up the store into multiple reducers and sharing functionality/data between components
 
-[PR link](https://github.com/salammustafa728/storefront/pull/2)
+[PR link](https://github.com/salammustafa728/storefront/pull/3)
 
 
 # UML 
