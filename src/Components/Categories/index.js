@@ -17,6 +17,7 @@ const Category = (props) => {
       </h2>
     <div className='category'>
     {props.categories.map((category,idx) => {
+      // props.category.activeCategory
         return (
           <span key={idx} className="btnCat" 
           >

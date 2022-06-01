@@ -3,7 +3,7 @@ export const categories = [
     { normalizedName: 'Flowers', displayName: 'Flowers', description: 'AVAILBALE FLOWER ARRANGEMENTS' },
    
   ];
-  export const products = [
+export const products = [
     {
       category: 'Fruits',
       name: 'Peach and Berry Salad',
@@ -17,7 +17,7 @@ export const categories = [
       name: 'Berry Fruit Salad',
       description: 'Mixture of different delicious berries.',
       price: '10JOD',
-      inventoryCount: 5,
+      inventoryCount: 0,
    img: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F9155453.jpg&q=85',
     },
     {

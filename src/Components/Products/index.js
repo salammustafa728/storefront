@@ -1,30 +1,27 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import { filterProducts } from '../../reducer/action';
 import MediaCard from './Card';
 import Stack from '@mui/material/Stack';
 import './Card.scss';
-
+import { useSelector } from 'react-redux';
 
 const Product = (props) => {
-useEffect(()=>{
-  props.filterProducts(props.category.activeCategory.normalizedName,props.category.products);
-   // eslint-disable-next-line react-hooks/exhaustive-deps
-},[props.category.activeCategory])
+  const products = useSelector(state => state.products.products);
+
   return (
     <div id='cards-container' className='containerCards'>
-      {props.product.filterProducts.map((product,idx) => (
-        
+      {  products.filter((category)=> category.category===props.category.activeCategory.normalizedName).map((product,idx) => (
         <Stack direction="row" spacing={2} key={idx} >
           <MediaCard key={product.name} product={product} />
           </Stack>
-       
       ))}
     </div>
   )
 }
 
 const mapStateToProps = (state) => {
+  // console.log({state});
   return state;
 };
 const mapDispatchToProps = { filterProducts };
