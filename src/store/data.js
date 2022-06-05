@@ -5,6 +5,7 @@ export const categories = [
   ];
 export const products = [
     {
+      id:'1',
       category: 'Fruits',
       name: 'Peach and Berry Salad',
       description: 'This is a fabulous late-summer fruit salad. Use it on pancakes, waffles or French toast.',
@@ -13,6 +14,7 @@ export const products = [
   img: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F9366943.jpg&q=85',
     },
     {
+      id:'2',
       category: 'Fruits',
       name: 'Berry Fruit Salad',
       description: 'Mixture of different delicious berries.',
@@ -21,6 +23,7 @@ export const products = [
    img: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F9155453.jpg&q=85',
     },
     {
+      id:'3',      
         category: 'Fruits',
         name: 'Perfect Summer Fruit Salad',
         description: 'The perfect fruit salad for a backyard bbq or any occasion. ',
@@ -29,6 +32,7 @@ export const products = [
        img: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F07%2F22%2F2289556.jpg',
       },
     {
+      id:'4',
       category: 'Flowers',
       name: '250 Roses',
       description: 'The arrangement contains Rose: Height 40 CM Width 65 CM',
@@ -37,6 +41,7 @@ export const products = [
       img: 'https://floward.imgix.net/web/Files/thumPro/637506242368301139.jpg',
     },
     {
+      id:'5',
       category: 'Flowers',
       name: 'Hortensia',
       description: 'A blooming and multicolored selection of Flowers arranged together to make the perfect piece of decoration wherever it is set: Height 50 CM Width 32 CM  ',
