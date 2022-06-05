@@ -3,6 +3,7 @@ import { products } from '../store/data';
 export const initialState = {
   products:products,
   filterProducts: [],
+  inventoryCount:products.inventoryCount
 };
 
 export const productsRducer = (state = initialState, action) => {
@@ -40,7 +41,22 @@ export const productsRducer = (state = initialState, action) => {
         });
   
         return { filterProducts, products };
+
+        case 'DECREMENT_INVENTORY':
+          products = state.products;
+          filterProducts = state.filterProducts.map((product) => {
+            if (product.id === payload && product.inventoryCount > 0) {
+              return { ...product, inventoryCount: product.inventoryCount - 1 };
+            } else {
+              return product;
+            }
+          });
+          return {filterProducts,products};
+
     default:
       return state;
   }
 };
+
+
+

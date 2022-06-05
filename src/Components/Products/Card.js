@@ -7,16 +7,18 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "./Card.scss";
 import { addToCart } from "../../reducer/action";
-import { useDispatch,useSelector } from "react-redux";
-
+// import { decrementInventory } from "../../reducer/action";
+import { useDispatch } from "react-redux";
+//,useSelector
 export default function MediaCard(props) {
-  const state = useSelector((state) => state);
+  // const decrementInventory = props;
+  // const state = useSelector((state) => state);
   const dispatch = useDispatch();
   function addToCartHandler(productName) {
-    if (!state.cart.cartItemsProducts.includes(productName)) {
+    // if (!state.cart.cartItemsProducts.includes(productName)) {
       props.product.inventoryCount--;
       dispatch(addToCart(productName));
-    }
+    // }
   }
 
   return (
@@ -49,7 +51,12 @@ export default function MediaCard(props) {
         id="addButton"
         variant="contained"
         color="primary"
-        onClick={() => addToCartHandler(props.product.name)}
+        onClick={() => 
+          {
+              addToCartHandler(props.product.name)
+              // decrementInventory(props.idx)
+          }  
+        }
       >
         Add To Cart
       </Button> : <Button variant="outlined" color="error">Sold out</Button>
