@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
-import SimpleCart from '../SimpleCart/SimpleCart';
+// import SimpleCart from '../SimpleCart/SimpleCart';
 import Grid from '@mui/material/Grid';
 
 
@@ -25,7 +25,7 @@ export default function Header() {
             </Grid>
             <Grid container spacing={2}>
             <Typography variant="h6" color="inherit" component="div">
-            <SimpleCart/>
+            {/* <SimpleCart/> */}
             </Typography>
             </Grid>
           </Toolbar>

@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Category from './Components/Categories';
 import Products from './Components/Products';
 // import SimpleCart from './Components/SimpleCart/SimpleCart';
+import ActiveCat from './Components/Categories/CurrentCat';
 
 const darkTheme = createTheme({
   palette: {
@@ -19,6 +20,7 @@ const App = () => {
        <Header/>
        {/* <SimpleCart/> */}
        <Category/>
+       <ActiveCat/>
        <Products/>
       <Footer/>
        </ThemeProvider>
