@@ -13,7 +13,7 @@ export const initialState = {
         const cartItemsProducts = state.cartItemsProducts.filter((product) => product !== payload);
   
         return { cartItemsProducts };
-  
+      
       default:
         return state;
     }

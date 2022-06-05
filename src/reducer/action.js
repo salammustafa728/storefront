@@ -25,3 +25,12 @@ export function addToCart(productName) {
       payload: productName,
     };
   }
+
+  export const decrementInventory = (id) => {
+    return {
+      type: 'DECREMENT_INVENTORY',
+      payload: id,
+    };
+  };
+  
+ 
