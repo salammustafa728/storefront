@@ -19,18 +19,18 @@ export function addToCart(productName) {
     };
   }
   
-  export function deleteFromCart(productName) {
+export function deleteFromCart(productName) {
     return {
       type: 'DELETE_FROM_CART',
       payload: productName,
     };
   }
 
-  export const decrementInventory = (id) => {
-    return {
-      type: 'DECREMENT_INVENTORY',
-      payload: id,
-    };
-  };
+  // export const decrementInventory = (id) => {
+  //   return {
+  //     type: 'DECREMENT_INVENTORY',
+  //     payload: id,
+  //   };
+  // };
   
  
