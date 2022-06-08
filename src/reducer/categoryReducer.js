@@ -61,37 +61,39 @@ const changeCategory = (state = initialState, action) => {
 
   switch(type) {
 
-    case 'Fruits':
-      let activeCategory = 'Fruits';
-      let categories = state.categories.map(category => {
+    case 'Electronics':
+      let activeCategory = 'Electronics';
+      let categories = state.products.map(category => {
         console.log(category+'uuuuuuu');
-        if (category.name === payload) {
-          return { name: category.name, description: category.description }
+        if (category.displayName === "Electronics") {
+          return { displayName: category.displayName, description: category.description }
         }
         return category;
       });
-      let fetched = payload;      
-      let products = fetched.filter(product => product.category === activeCategory);
-
+      let fetched = payload; 
+      console.log({fetched});     
+      let products = fetched.filter(product => product.categoryAssociation === activeCategory);
+      console.log({products}); 
       return { activeCategory, categories, products };
 
-    case 'Flower':
-      let active = 'Flower';
-      let cats = state.categories.map(category => {
-        if (category.name === payload) {
-          return { name: category.name, description: category.description }
+    case 'Food':
+      let active = 'Food';
+      let cats = state.products.map(category => {
+        if (category.displayName === payload) {
+          return { displayName: category.displayName, description: category.description }
         }
         return category;
       });
-      let fetchedProducts = payload;      
-      let prods = fetchedProducts.filter(product => product.category === active);
-
+      let fetchedProducts = payload;  
+          
+      let prods = fetchedProducts.filter(product => product.categoryAssociation === active);
+      console.log({prods});   
       return { activeCategory: active, categories: cats, products: prods};  
 
     case 'ADDCART':
       let items = state.products.map(product => {
-        if (product.name === payload.name) {
-          return { id: product.id, category: product.category, name: product.name, description: product.description, price: product.price, inventory: product.inventory - 1, image: product.image };
+        if (product === payload) {
+          return { id: product.id, categoryAssociation: product.categoryAssociation, displayName: product.displayName, description: product.description, price: product.price, inventoryCount: product.inventoryCount - 1, image: product.image };
         }
         return product;
       })  
@@ -100,16 +102,19 @@ const changeCategory = (state = initialState, action) => {
 
     case 'REMOVECART':
       let allItems = state.products.map(product => {
-        if (product.name === payload.name) {
-          return { id: product.id, category: product.category, name: product.name, description: product.description, price: product.price, inventory: product.inventory + 1, image: product.image };
+        if (product === payload) {
+          return { id: product.id, categoryAssociation: product.categoryAssociation, displayName: product.displayName, description: product.description, price: product.price, inventoryCount: product.inventoryCount + 1, image: product.image };
         }
+        console.log({product});
         return product;
       })  
-
+      console.log(state.products+">>>");
       return { categories: state.categories, activeCategory: state.activeCategory, products: allItems};
 
     case 'GET':
       let fetchedProds = payload;
+      console.log(fetchedProds);
+      // console.log(state.categories);
       return { categories: state.categories, activeCategory: state.activeCategory, products: fetchedProds};
       
     case 'RESET':

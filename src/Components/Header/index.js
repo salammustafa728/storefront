@@ -7,9 +7,10 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 // import SimpleCart from '../SimpleCart/SimpleCart';
 import Grid from '@mui/material/Grid';
+import { connect } from 'react-redux';
 
 
-export default function Header() {
+ function Header(props) {
     return (
       <Box sx={{ flexGrow: 1 }}>
 
@@ -25,7 +26,7 @@ export default function Header() {
             </Grid>
             <Grid container spacing={2}>
             <Typography variant="h6" color="inherit" component="div">
-            {/* <SimpleCart/> */}
+           cart: ( {props.cartCounter} )
             </Typography>
             </Grid>
           </Toolbar>
@@ -33,3 +34,8 @@ export default function Header() {
       </Box>
     );
   }
+  const mapStateToProps = state => ({
+    cart: state.cart.cartItemsProducts,
+    cartCounter: state.cart.cartCount
+  });
+  export default connect(mapStateToProps)(Header);

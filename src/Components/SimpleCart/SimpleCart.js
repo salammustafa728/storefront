@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { deleteFromCart } from "../../reducer/action";
+// import { useDispatch } from "react-redux";
+// import { deleteFromCart } from "../../reducer/action";
 import Button from "@mui/material/Button";
 import ListItemButton from "@mui/material/ListItemButton";
 import "./SimpleCart.scss";
@@ -8,33 +8,37 @@ import { connect } from "react-redux";
 import * as actions from '../../reducer/action'
 
 function SimpleCart(props) {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state.cart);
-  function deleteHandler(productName) {
-    dispatch(deleteFromCart(productName));
-  }
+  // const dispatch = useDispatch();
+  // const state = useSelector((state) => state.cart);
+  // function deleteHandler(productName) {
+  //   dispatch(deleteFromCart(productName));
+  // }
   const fetchData = (e) => {
     e && e.preventDefault();
-    // props.getCart();
+    props.getCart();
   }
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div id="simple-cart">
-      {/* <h2>Your Cart Content:</h2> */}
-
-    <p>  CART {props.cart.cartCounter}</p>
-      {state.cartItemsProducts.map((product, idx) => (
+     
+     <h2>Your Cart Content:</h2>
+    {/* <p>  CART {props.cartCounter}</p> */}
+    {console.log('cart>>>>  '+props.cart)}
+      {props.cart.map((product, idx) => (
         <ListItemButton component="a" href="#simple-list" key={idx}>
+          
+           <br/>
           <p align="right" id="li">
             {" "}
-            {product}
+            {product.displayName}
             <Button
               id="Button"
               variant="contained"
               style={{ backgroundColor: "cadetblue", color: "white" }}
-              onClick={() => deleteHandler(product)}
+              onClick={() => props.deleteFromCart(product)}
             >
               Delete
             </Button>{" "}
@@ -47,14 +51,15 @@ function SimpleCart(props) {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cartItemsProducts,
-  cartCounter: state.cartCount
+  cart: state.cart.cartItemsProducts,
+  cartCounter: state.cart.cartCount
 })
 
 
 const mapDispatchToProps = (dispatch, getState) => ({
-    // getCart: () => dispatch(actions.getCartData()),
-    // removeFromCart: (id, product) => dispatch(actions.deleteCartItem(id, product))
+    getCart: () => dispatch(actions.getCart()),
+    deleteFromCart: (product) => dispatch(actions.deleteFromCart(product)),
+    addToCart: (product)=>dispatch(actions.addToCart(product))
   })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleCart);

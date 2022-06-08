@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 
-const apiURL = 'https://fakestoreapi.com/products';
+const apiURL = 'https://app-auth-obieda.herokuapp.com/api/v1/products';
 
 export const getAction = payload => {
   return {
@@ -9,16 +9,16 @@ export const getAction = payload => {
   }
 }
 
-export const flowers = (data) => {
+export const getElectronic = (data) => {
   return {
-    type: 'Flowers',
+    type: 'Electronics',
     payload: data
   }
 }
 
-export const food = (data) => {
+export const getFoodd = (data) => {
   return {
-    type: 'FOOD',
+    type: 'Food',
     payload: data
   }
 }
@@ -27,58 +27,59 @@ export const getRemoteData = () =>
 (dispatch,state)=>{
   return superagent.get(apiURL)
       .then(response => {
+        console.log({response});
         dispatch(getAction(response.body))
       }).catch(err => console.log(err.message))
 }
 
-export const getflowers = () => 
+export const getElectronics = () => 
 (dispatch,state)=>{
   return superagent.get(apiURL)
   .then(response => {
-    dispatch(flowers(response.body))
+    // console.log({response});
+    dispatch(getElectronic(response.body))
   }).catch(err => console.log(err.message))
 }
 export const getFood = () => 
 (dispatch,state)=>{
   return superagent.get(apiURL)
   .then(response => {
-    dispatch(food(response.body))
+    console.log({response});
+    dispatch(getFoodd(response.body))
   }).catch(err => console.log(err.message))
 }
-// export const getCartData = () => 
-// (dispatch,state)=>{
-//   return superagent.get(apiCart)
-//     .then(response => {
-//       dispatch(getCart(response.body))
-//     }).catch(err => console.log(err.message))
+// export const addToCart = (i) => {
+//   return {
+//     type:"ADDCART",
+//     payload:i
 //   }
+// }
 
-
-
-export function selectCategory(categoryNmae) {
-    return{
-        type:"SELECT_CATEGORY",
-        payload: categoryNmae
-    };
+export function getCart(){
+  return{
+    type: 'GETCART',
+  }
 }
 
-export function filterProducts(categoryNmae,products) {
-    return{
-        type: 'FILTER_PRODUCTS',
-        payload:{categoryNmae,products},
-    };
-}
+// export function selectCategory(categoryNmae) {
+//     return{
+//         type:"SELECT_CATEGORY",
+//         payload: categoryNmae
+//     };
+// }
+
 
 export function addToCart(productName) {
+  console.log(productName);
     return {
-      type: 'ADD_TO_CART',
+      type: 'ADDCART',
       payload: productName,
     };
   }
   
 export function deleteFromCart(productName) {
     return {
-      type: 'DELETE_FROM_CART',
+      type: 'REMOVECART',
       payload: productName,
     };
   }
@@ -90,4 +91,9 @@ export function deleteFromCart(productName) {
   //   };
   // };
   
- 
+ // export function filterProducts(categorayName) {
+//   return {
+//     type: 'FILTER_PRODUCTS',
+//     payload: categorayName,
+//   };
+// }

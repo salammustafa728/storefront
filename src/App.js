@@ -4,7 +4,7 @@ import Header from './Components/Header'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Category from './Components/Categories';
 import Products from './Components/Products';
-// import SimpleCart from './Components/SimpleCart/SimpleCart';
+import SimpleCart from './Components/SimpleCart/SimpleCart';
 import ActiveCat from './Components/Categories/CurrentCat';
 
 const darkTheme = createTheme({
@@ -18,7 +18,7 @@ const App = () => {
     <div>
        <ThemeProvider theme={darkTheme}>
        <Header/>
-       {/* <SimpleCart/> */}
+       <SimpleCart/>
        <Category/>
        <ActiveCat/>
        <Products/>

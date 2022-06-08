@@ -1,6 +1,6 @@
 export const initialState = {
     cartItemsProducts: [],
-    counter:0
+    cartCount:0
   };
   
   const changeCart = (state=initialState, action)=>{
@@ -8,21 +8,30 @@ export const initialState = {
 
     switch (type) {
       case 'ADDCART':
-        let cartCount = state.counter+1;
-        let cartArr=state.cartItemsProducts;
+        let cartCount = state.cartCount+1;
+        // let avaliability 
+        let cartArr=[...state.cartItemsProducts];
         cartArr.push(payload);
-
-       return {cartArr,cartCount};
+        console.log({cartArr});
+       return {cartItemsProducts:cartArr,cartCount};
 
        case 'REMOVECART':
-        let cartCounter = state.counter-1;
-        let tempcartArr=state.cartItemsProducts.filter(item=>item.name !==payload.name);
+        let cartCounter = state.cartCount-1;
 
-       return {cartArr:tempcartArr,cartCount:cartCounter};
+        let tempcartArr=[...state.cartItemsProducts];
+        // let removedItem =payload
+        tempcartArr= state.cartItemsProducts.filter(item=>item !==payload);
+
+       return {cartItemsProducts:tempcartArr,cartCount:cartCounter};
     
-        case 'GEtCart':
-          let fetchedData=payload;
-          return { cart: fetchedData, cartCount: payload.length };
+        // case 'GETCART':
+          // let fetchedData=payload;
+          // console.log({fetchedData});
+          // return { cartItemsProducts: fetchedData, cartCount: fetchedData.length };
+         
+          case 'GETCART':
+            console.log("cartItemsProducts>>>>>> "+state.cartItemsProducts);
+            return state;
 
       default:
         return state;

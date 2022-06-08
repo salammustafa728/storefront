@@ -1,13 +1,20 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 import "./Category.scss";
 // import { selectCategory } from "../../reducer/action";
-import {getRemoteData,getFood,getflowers} from "../../reducer/action";
+import * as actions from "../../reducer/action";
 
 const Category = (props) => {
+  const dispatch = useDispatch();
   // function onClickHandler(categoryNmae) {
-  //   props.selectCategory(categoryNmae);
+  //   props.products.map(category=>{
+  //     return(
+  //       if(category.categoryAssociation)
+  //       props.selectCategory(categoryNmae);
+  //     )
+  //   })
+    
   // }
   return (
     <div>
@@ -22,7 +29,7 @@ const Category = (props) => {
             size="large"
             variant="contained"
             color="primary"
-            onClick={() => props.getRemoteData()}
+            onClick={() => props.get()}
           >
             ALL
           </Button>
@@ -32,9 +39,9 @@ const Category = (props) => {
             size="large"
             variant="contained"
             color="primary"
-            onClick={() => props.getFood()}
+            onClick={() => props.food()}
           >
-            Fruits
+            Food
           </Button>
           <Button
             id="Button3"
@@ -42,12 +49,12 @@ const Category = (props) => {
             size="large"
             variant="contained"
             color="primary"
-            onClick={() => props.getflowers()}
+            onClick={() => props.electronics()}
           >
-            Flowers
+            Electronics
           </Button>
         </>
-        {/* {props.categories.map((category,idx) => {
+        {/* {props.products.map((category,idx) => {
       // props.category.activeCategory
         return (
           <span key={idx} className="btnCat" 
@@ -61,9 +68,9 @@ const Category = (props) => {
                 color:'white',
               }}
               
-              onClick={() => onClickHandler(category.normalizedName)}
+              onClick={() => onClickHandler(category.categoryAssociation)}
             >
-              {category.normalizedName}
+              {category.categoryAssociation}
             </Button>
            
           </span>
@@ -77,15 +84,13 @@ const Category = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state) => {
-  return state;
-};
-// console.log(action.getRemoteData());
-// console.log(action.getFood());
-// console.log(action.getflowers());
-const mapDispatchToProps = {getRemoteData,getFood,getflowers}
-  // get: () => dispatch(action.getRemoteData()),
-  // food: () => dispatch(action.getFood()),
-  // flowers: () => dispatch(action.getflowers()),
-// });
+const mapStateToProps = (state) =>({
+  products: state.category.products,
+}) ;
+
+const mapDispatchToProps = (dispatch, getState)=> ({
+  get: () => dispatch(actions.getRemoteData()),
+  food: () => dispatch(actions.getFood()),
+  electronics: () => dispatch(actions.getElectronics()),
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Category);

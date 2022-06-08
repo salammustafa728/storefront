@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect} from "react-redux";
 // import { filterProducts } from "../../reducer/action";
 import * as actions from '../../reducer/action';
 // import MediaCard from "./Card";
@@ -16,13 +16,13 @@ import Typography from "@mui/material/Typography";
 // import * as actions from "../../reducer/action";
 
 const Product = (props) => {
-  const dispatch = useDispatch();
-  function addToCartHandler(productName) {
+  // const dispatch = useDispatch();
+  // function addToCartHandler(productName) {
     // if (!state.cart.cartItemsProducts.includes(productName)) {
       // props.product.inventoryCount--;
       // dispatch(addToCart(productName));
     // }
-  }
+  // }
   // const state = useSelector((state) => state.categories);
   // console.log({state});
   // const decrementInventory = props;
@@ -32,15 +32,17 @@ const Product = (props) => {
   }
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div id="cards-container" className="containerCards">
-      {console.log(props.products)}
+      {/* {console.log("categories>>>> "+props.categories)} */}
       {props.products
         // .filter(
         //   (category) =>
-        //     category.category === props.categories.normalizedName
+        //   // console.log(category.categoryAssociation)
+        //    category.categoryAssociation === props.products.category
         // )
         .map((product, idx) => (
           <Stack direction="row" spacing={2} key={idx}>
@@ -62,7 +64,7 @@ const Product = (props) => {
           Price : {product.price}
         </Typography>
         <Typography gutterBottom variant="h6" component="h6">
-          {/* Availability : {product.inventoryCount} pieces */}
+          Availability : {product.inventoryCount} pieces
         </Typography>
       </CardContent>
       <CardActions>
@@ -72,13 +74,7 @@ const Product = (props) => {
         id="addButton"
         variant="contained"
         color="primary"
-        onClick={() => 
-          {
-              addToCartHandler(product.name)
-              // decrementInventory(props.idx)
-          }  
-        }
-      >
+        onClick={() => {props.addToCartHandler(product)}}>
         Add To Cart
       </Button> : <Button variant="outlined" color="error">Sold out</Button>
       } 
@@ -93,11 +89,12 @@ const Product = (props) => {
 };
 const mapDispatchToProps = (dispatch, getState) => ({
   get: () => dispatch(actions.getRemoteData()),
-  // addToCartHandler: (id, product) => dispatch(actions.putRemoteData(id, product))
+  addToCartHandler: (product) => dispatch(actions.addToCart(product))
 })
+
 const mapStateToProps = (state) =>({
-  // categories:state.categories,
+  categories:state.category.categories,
   products: state.category.products,
-  activeCategory: state.category.activeCategory
+  activeCategory: state.category.activeCategory,
 }) ;
 export default connect(mapStateToProps, mapDispatchToProps)(Product);
