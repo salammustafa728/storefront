@@ -27,6 +27,15 @@ export const getRemoteData = () =>
 (dispatch,state)=>{
   return superagent.get(apiURL)
       .then(response => {
+        // console.log({response});
+        dispatch(getAction(response.body))
+      }).catch(err => console.log(err.message))
+}
+
+export const getRemoteDataById = (id) => 
+(dispatch,state)=>{
+  return superagent.get(`${apiURL}/${id}`)
+      .then(response => {
         console.log({response});
         dispatch(getAction(response.body))
       }).catch(err => console.log(err.message))
