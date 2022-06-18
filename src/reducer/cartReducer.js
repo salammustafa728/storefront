@@ -1,6 +1,7 @@
 export const initialState = {
     cartItemsProducts: [],
-    cartCount:0
+    cartCount:0,
+    total:0
   };
   
   const changeCart = (state=initialState, action)=>{
@@ -9,20 +10,21 @@ export const initialState = {
     switch (type) {
       case 'ADDCART':
         let cartCount = state.cartCount+1;
+      //  state.total+= payload.price;
         // let avaliability 
         let cartArr=[...state.cartItemsProducts];
         cartArr.push(payload);
-        console.log({cartArr});
-       return {cartItemsProducts:cartArr,cartCount};
+        // console.log({cartArr});
+       return {cartItemsProducts:cartArr,cartCount,total: state.total+= parseInt(payload.price)};
 
        case 'REMOVECART':
         let cartCounter = state.cartCount-1;
-
+        
         let tempcartArr=[...state.cartItemsProducts];
         // let removedItem =payload
         tempcartArr= state.cartItemsProducts.filter(item=>item !==payload);
 
-       return {cartItemsProducts:tempcartArr,cartCount:cartCounter};
+       return {cartItemsProducts:tempcartArr,cartCount:cartCounter,total:state.total -= parseInt(payload.price)};
     
         // case 'GETCART':
           // let fetchedData=payload;
@@ -30,7 +32,7 @@ export const initialState = {
           // return { cartItemsProducts: fetchedData, cartCount: fetchedData.length };
          
           case 'GETCART':
-            console.log("cartItemsProducts>>>>>> "+state.cartItemsProducts);
+            // console.log("cartItemsProducts>>>>>> "+state.cartItemsProducts);
             return state;
 
       default:

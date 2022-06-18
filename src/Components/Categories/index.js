@@ -1,12 +1,12 @@
 import React from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import Button from "@mui/material/Button";
 import "./Category.scss";
 // import { selectCategory } from "../../reducer/action";
 import * as actions from "../../reducer/action";
 
 const Category = (props) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // function onClickHandler(categoryNmae) {
   //   props.products.map(category=>{
   //     return(
@@ -25,7 +25,8 @@ const Category = (props) => {
         <>
           <Button
             id="Button1"
-            style={{ backgroundColor: "cadetblue", color: "white" }}
+            className="btn-cat"
+            style={{ backgroundColor: "cadetblue", color: "white",marginRight:'1%' }}
             size="large"
             variant="contained"
             color="primary"
@@ -35,7 +36,8 @@ const Category = (props) => {
           </Button>
           <Button
             id="Button2"
-            style={{ backgroundColor: "cadetblue", color: "white" }}
+            className="btn-cat"
+            style={{ backgroundColor: "cadetblue", color: "white",marginRight:'1%' }}
             size="large"
             variant="contained"
             color="primary"
@@ -45,7 +47,8 @@ const Category = (props) => {
           </Button>
           <Button
             id="Button3"
-            style={{ backgroundColor: "cadetblue", color: "white" }}
+            className="btn-cat"
+            style={{ backgroundColor: "cadetblue", color: "white",marginRight:'1%' }}
             size="large"
             variant="contained"
             color="primary"

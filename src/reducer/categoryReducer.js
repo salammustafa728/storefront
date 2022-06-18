@@ -113,7 +113,7 @@ const changeCategory = (state = initialState, action) => {
 
     case 'GET':
       let fetchedProds = payload;
-      console.log(fetchedProds);
+      // console.log(fetchedProds);
       // console.log(state.categories);
       return { categories: state.categories, activeCategory: state.activeCategory, products: fetchedProds};
       
